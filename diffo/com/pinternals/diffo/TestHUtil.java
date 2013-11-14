@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import sun.misc.BASE64Encoder;
 
 public class TestHUtil {
-	private static Logger log = Logger.getLogger(TestHUtil.class.getName());
+	private final static Logger log = Logger.getLogger(TestHUtil.class.getName());
 	public static void main(String[] args) {
 		try {
 			String basicAuth = "Basic " + new String(new BASE64Encoder().encode("IKUZNETSOV:12345678".getBytes()));

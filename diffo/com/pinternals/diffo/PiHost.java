@@ -49,7 +49,7 @@ public class PiHost {
 	protected static final Lock lock = new ReentrantLock();
 
 	public URL uroot;
-	private URL ucpahtml, uaf_schxml;
+//	private URL ucpahtml, uaf_schxml;
 //	private CPACache cpacache = null;
 	private int timeoutMillis=30000;
 	private Proxy proxy = null;
@@ -103,7 +103,7 @@ public class PiHost {
 	}
 	
 	// --------------------------------------------------------- XI services
-	private boolean buildSLD (Side sld, List<PiEntity> es) {
+//	private boolean buildSLD (Side sld, List<PiEntity> es) {
 //		int q=0;
 //		PiEntity bs = new PiEntity(this, -1, sld, "SAP_BusinessSystem", "Business System", q++);
 //		bs.ok = true;
@@ -145,9 +145,8 @@ public class PiHost {
 //		bst.attrs.add(new ResultAttribute("SAP_LastChangedBy", "ChangedBy", r++));
 //		bst.attrs.add(new ResultAttribute("SAP_LastModificationTime", "ModifiedAt", r++));
 //		es.add(bst);
-		
-		return false;
-	}
+//		return false;
+//	}
 	/**
 	 * Собирает для repository и directory
 	 * @param side		для какой стороны составлять индекс
@@ -557,18 +556,18 @@ public class PiHost {
 //	}
 
 	protected boolean download() throws SQLException, MalformedURLException, IOException {
-		int zzz = 0/0;
-		
-		
-		assert hostdb!=null && !hostdb.isClosed() && !hostdb.isReadOnly() : "host DB error";
+//		int zzz = 0/0;
+//		
+//		
+//		assert hostdb!=null && !hostdb.isClosed() && !hostdb.isReadOnly() : "host DB error";
 		//hosql_inbox_unk=SELECT inbox_id,url,dlcount FROM inbox;
 		//hosql_inbox_unks=SELECT object_ref,object_id,version_id,session_id,url,dlcount FROM inbox WHERE inbox_id=?1;
 		//hosql_objlink_ins=INSERT INTO objlink (object_ref,object_id,version_id,session_id,url,bloz)
-		PreparedStatement psUnk = DUtil.prepareStatement(hostdb, "hosql_inbox_unk")
-				, psUnks = DUtil.prepareStatement(hostdb, "hosql_inbox_unks")
-				, psUnkd = DUtil.prepareStatement(hostdb, "hosql_inbox_unkd")
-				, psOLP = DUtil.prepareStatement(hostdb, "hosql_objlink_ins")
-				;
+//		PreparedStatement psUnk = DUtil.prepareStatement(hostdb, "hosql_inbox_unk")
+//				, psUnks = DUtil.prepareStatement(hostdb, "hosql_inbox_unks")
+//				, psUnkd = DUtil.prepareStatement(hostdb, "hosql_inbox_unkd")
+//				, psOLP = DUtil.prepareStatement(hostdb, "hosql_objlink_ins")
+//				;
 		/*
 		ResultSet rs = psUnk.executeQuery();
 		HashMap<Integer,Long> hm = new HashMap<Integer,Long>(100);

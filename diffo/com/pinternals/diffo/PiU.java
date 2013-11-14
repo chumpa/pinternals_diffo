@@ -7,11 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
 
 import org.xml.sax.SAXException;
-
-import com.pinternals.diffo.PiObject.Kind;
 
 interface Hier {
 }

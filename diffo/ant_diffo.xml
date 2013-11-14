@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project pinternals_diffo with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="../diffo_run/diffo.jar">
+            <manifest>
+                <attribute name="Main-Class" value="com.pinternals.diffo.Main"/>
+                <attribute name="Class-Path" 
+  value=". lib/commons-cli-1.2.jar 
+	lib/sqlite-jdbc-3.7.2.jar 
+	lib/tagsoup-1.2.1.jar 
+	saplib/sap.com~tc~clients~http~all.jar 
+	saplib/sap.com~tc~logging~java~impl.jar 
+	saplib/sap.com~tc~sld~lcrclient_lib.jar 
+	saplib/sap.com~tc~sld~sldclient_lib.jar"/>
+            </manifest>
+            <fileset dir="."/>
+        </jar>
+        <delete dir="../diffo_run/lib"/>
+        <mkdir dir="../diffo_run/lib"/>
+        <delete dir="../diffo_run/saplib"/>
+        <mkdir dir="../diffo_run/saplib"/>
+        <copy file="./lib/commons-cli-1.2.jar" todir="../diffo_run/lib"/>
+        <copy file="./lib/sqlite-jdbc-3.7.2.jar" todir="../diffo_run/lib"/>
+        <copy file="./lib/tagsoup-1.2.1.jar" todir="../diffo_run/lib"/>
+        <copy file="./saplib/sap.com~tc~clients~http~all.jar" todir="../diffo_run/saplib"/>
+        <copy file="./saplib/sap.com~tc~logging~java~impl.jar" todir="../diffo_run/saplib"/>
+        <copy file="./saplib/sap.com~tc~sld~lcrclient_lib.jar" todir="../diffo_run/saplib"/>
+        <copy file="./saplib/sap.com~tc~sld~sldclient_lib.jar" todir="../diffo_run/saplib"/>
+        <copy file="diffo.bat" todir="../diffo_run"/>
+    </target>
+</project>

@@ -19,7 +19,6 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -156,7 +155,7 @@ public class Diffo implements IDiffo, Cloneable {
 		b = b && createdb(conn) && commit();
 		if (a) b = b && start_session();
 		if (b) {
-			int i = DUtil.prepareStatement(conn, "sql_config_putversion", 
+			DUtil.prepareStatement(conn, "sql_config_putversion", 
 						DUtil.getSql("db_version"), session_id).executeUpdate();
 			commit();
 		}
@@ -482,16 +481,16 @@ public class Diffo implements IDiffo, Cloneable {
 
 	
 	public void askSld(PiHost p) {
-		Side l = Side.SLD;
-		PiEntity slds[] = {
-				p.getEntity(l, "SAP_BusinessSystem"),
-				p.getEntity(l, "SAP_BusinessSystemGroup"),
-				p.getEntity(l, "SAP_BusinessSystemPath"),
-		};
-		for (PiEntity e: slds) {
-			// TODO: not implemented yet
-//			ArrayList<PiObject> objs = p.askIndex(e);
-		}
+//		Side l = Side.SLD;
+//		PiEntity slds[] = {
+//				p.getEntity(l, "SAP_BusinessSystem"),
+//				p.getEntity(l, "SAP_BusinessSystemGroup"),
+//				p.getEntity(l, "SAP_BusinessSystemPath"),
+//		};
+//		for (PiEntity e: slds) {
+//			// TODO: not implemented yet
+////			ArrayList<PiObject> objs = p.askIndex(e);
+//		}
 	}	
 
 	public void askCc(PiHost p) throws SQLException {
@@ -520,7 +519,7 @@ public class Diffo implements IDiffo, Cloneable {
 		assert p.entities !=null && p.entities.size() > 0 : "entities are empty";
 		assert el!=null && el.entity_id!=0 : "Entity is not refreshed yet (" + el + ")";
 		
-		ResultSet rs;
+//		ResultSet rs;
 //		String r;
 //		RawRef k;
 		List<DiffItem> al = new ArrayList<DiffItem>(100); 
@@ -909,10 +908,10 @@ public class Diffo implements IDiffo, Cloneable {
 		}
 
 		// одной транзакцией вставили все заготовки под записи пейлоадов
-		p.lock.lock();
+		PiHost.lock.lock();
 		psIns.executeBatch();
 		p.hostdb.commit();
-		p.lock.unlock();
+		PiHost.lock.unlock();
 		psIns.clearBatch();
 
 		long pd=0;
@@ -944,10 +943,10 @@ public class Diffo implements IDiffo, Cloneable {
 					pd--;
 			}
 			if (d) {
-				p.lock.lock();
+				PiHost.lock.lock();
 				psUpdPl.executeBatch();
 				p.hostdb.commit();
-				p.lock.unlock();
+				PiHost.lock.unlock();
 				psUpdPl.clearBatch();
 				p.commitHostDb();
 			}
